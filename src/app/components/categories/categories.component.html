@@ -1,5 +1,28 @@
 <h1 class="display-4 text-center">Categorias</h1>
 
+<div class="row">
+  <div class="col-sm-6">   
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class=" btn btn-info" id="inputGroup-sizing-default">Busqueda</span>
+      </div>
+        <input #parameter (keyup)="displayCategoriesBySearch(parameter.value)" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="custom-control custom-switch ">
+      <input type="checkbox" class="custom-control-input" id="customSwitch1">
+      <label class="custom-control-label" for="customSwitch1">Mostrar Categorias Desactivadas</label>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#manageAddCategoryModal">
+      <i class="fas fa-plus-square"></i> Agregar Categoria
+    </button>
+  </div>
+</div>
+
+
 <table class="table table-hover">
   <thead>
     <tr class="table-info">
@@ -17,9 +40,82 @@
       <td> {{ category.Description }} </td>
       <td>Ultima modificacion hecha por {{ category.UserId}} el {{ category.LastUpdateDate | date:'medium' }} </td>
       <td>
-        <button type="button" class="btn btn-outline-primary btn-block">Editar</button>
+        <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#manageEditCategoryModal">Editar</button>
         <button type="button" class="btn btn-outline-danger btn-block">Desactivar</button> 
       </td>
     </tr>
   </tbody>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="manageAddCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase" id="exampleModalLongTitle">Agregar Categoria</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca una Categoria" data-toggle="tooltip" data-placement="right" title="Agregue un nombre para la Categoria." required>
+            <div class="invalid-feedback">
+              Por favor agregue un nombre para la Categoria
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripcion</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" data-toggle="tooltip" data-placement="right" title="Agregue una descripcion que le ayuda a identificar el uso de esta Categoria"></textarea>
+          </div>
+          <div class="alert alert-info" role="alert">
+              ** Las Categorias sirven para poder clasificar los productos de una manera mas facil y ordenada. **
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-success btn-lg" >Guardar</button>
+        <button type="button" class="btn btn-outline-danger btn-lg" data-dismiss="modal">Cancelar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="manageEditCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-uppercase" id="exampleModalLongTitle">Editar Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">ID:</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca una Categoria" data-toggle="tooltip" data-placement="right" title="Agregue un nombre para la Categoria." disabled>
+              </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nombre</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca una Categoria" data-toggle="tooltip" data-placement="right" title="Agregue un nombre para la Categoria." required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Descripcion</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" data-toggle="tooltip" data-placement="right" title="Agregue una descripcion que le ayuda a identificar el uso de esta Categoria"></textarea>
+            </div>
+            <div class="alert alert-info" role="alert">
+                ** Las Categorias sirven para poder clasificar los productos de una manera mas facil y ordenada. **
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline-success btn-lg" >Guardar</button>
+          <button type="button" class="btn btn-outline-danger btn-lg" data-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>

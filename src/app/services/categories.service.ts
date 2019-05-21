@@ -14,11 +14,10 @@ export class CategoriesService{
     }
 
     getCategories(){
-
-        const header = new HttpHeaders({
-            'Content-Type': 'application/json'
-        });
-
         return this.httpClient.get( this.url + 'getcategories');
+    }
+
+    searchCategories(searchParam: string){
+        return this.httpClient.get( this.url + 'searchactivecategories?searchParam=' + searchParam);
     }
 }
