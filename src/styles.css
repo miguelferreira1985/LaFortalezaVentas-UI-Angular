@@ -5,7 +5,7 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background: #fafafa; 
 }
 
 p {
@@ -13,8 +13,15 @@ p {
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+    color: #fff;
 }
+
+.jumbotron{
+    background-color: #7386D5 !important;
+    color: #fff !important;
+    height: "250px" !important;
+}
+
 
 a,
 a:hover,
@@ -188,3 +195,40 @@ a.article:hover {
         display: none;
     }
 }
+
+/* Animations */
+
+.animated {
+    -webkit-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  .medium {
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.8;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fadeIn {
+    animation-name: fadeIn;
+  }
